@@ -1,0 +1,166 @@
+---
+// Vertical workflow diagram with branching — same structure as the styleguide.
+// Self-contained: drops in anywhere on the page, sits on a dot-grid backdrop.
+---
+
+<section class="section" id="how-it-works">
+  <div class="container stack-6">
+    <span class="eyebrow"
+      ><span class="num">02</span><span class="sep">/</span> How it works</span
+    >
+    <h2>One workflow. <span class="italic-accent">Built for you.</span></h2>
+    <p>
+      Every system we build follows the same skeleton. Lead in, score, route,
+      convert. The active path carries crimson. Status pills float beside live
+      nodes.
+    </p>
+
+    <div class="dot-grid" style="margin-top:24px">
+      <div class="flow-v">
+        <div class="flow-node active">
+          <div class="flow-node-head">
+            <div class="flow-node-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><circle cx="12" cy="12" r="3"></circle><path
+                  d="M3 12h6M15 12h6M12 3v6M12 15v6"></path></svg
+              >
+            </div>
+            <div class="flow-node-title">When new lead found</div>
+            <span class="type-pill">Leads</span>
+          </div>
+          <div class="flow-node-body">
+            Triggers when a person is added to the Q2 outbound list and matches
+            the ICP filters.
+          </div>
+          <span class="status-pill flow">Triggered</span>
+        </div>
+
+        <div class="v-conn live">
+          <svg viewBox="0 0 320 56" preserveAspectRatio="none">
+            <line class="line" x1="160" y1="0" x2="160" y2="48"></line>
+            <polygon class="arrow" points="155,48 160,56 165,48"></polygon>
+            <circle class="dot" cx="160" cy="0" r="3"></circle>
+          </svg>
+        </div>
+
+        <div class="flow-node active">
+          <div class="flow-node-head">
+            <div class="flow-node-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path
+                  d="M3 6h13M16 6l3 3-3 3M21 18H8M8 18l-3-3 3-3"></path></svg
+              >
+            </div>
+            <div class="flow-node-title">Score & route</div>
+            <span class="type-pill">Condition</span>
+          </div>
+          <div class="flow-node-body">
+            Routes to a sequence based on ICP score, intent signal, and
+            territory.
+          </div>
+          <span class="status-pill positive">Completed</span>
+        </div>
+
+        <div class="branch-fan">
+          <svg viewBox="0 0 680 80" preserveAspectRatio="none">
+            <path
+              class="line"
+              d="M340,0 V36"
+              stroke-linejoin="round"
+              stroke-linecap="round"></path>
+            <path
+              class="line"
+              d="M340,36 H170 V72"
+              stroke-linejoin="round"
+              stroke-linecap="round"></path>
+            <polygon class="arrow" points="165,72 170,80 175,72"></polygon>
+            <path
+              class="line muted"
+              d="M340,36 H510 V72"
+              stroke-linejoin="round"
+              stroke-linecap="round"></path>
+            <polygon class="arrow muted" points="505,72 510,80 515,72"
+            ></polygon>
+          </svg>
+          <span class="branch-label" style="left:25%; top:48%"
+            >Hot · score ≥ 80</span
+          >
+          <span class="branch-label muted" style="left:75%; top:48%"
+            >Cold · score &lt; 80</span
+          >
+        </div>
+
+        <div class="branch-row">
+          <div class="flow-node active">
+            <div class="flow-node-head">
+              <div class="flow-node-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"
+                  ></path></svg
+                >
+              </div>
+              <div class="flow-node-title">Add to Q2 sequence</div>
+              <span class="type-pill">Sequences</span>
+            </div>
+            <div class="flow-node-body">
+              Enrolls the person in the high-intent Q2 outbound sequence with
+              day-1 send.
+            </div>
+            <span class="status-pill positive">Completed</span>
+          </div>
+          <div class="flow-node">
+            <div class="flow-node-head">
+              <div class="flow-node-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><circle cx="12" cy="12" r="10"></circle><path
+                    d="M12 6v6l4 2"></path></svg
+                >
+              </div>
+              <div class="flow-node-title">Park in nurture</div>
+              <span class="type-pill">Sequences</span>
+            </div>
+            <div class="flow-node-body">
+              Re-evaluates in 90 days when score crosses the threshold or a new
+              signal fires.
+            </div>
+          </div>
+        </div>
+
+        <button class="flow-add" aria-label="Add step">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            ><path d="M12 5v14M5 12h14"></path></svg
+          >
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

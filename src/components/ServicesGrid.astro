@@ -1,0 +1,61 @@
+---
+const items = [
+  {
+    eyebrow: "A",
+    title: "Outbound Engine",
+    body: "Voice-calibrated sequences with intent-aware qualification. 8–12% reply rates without burning your domain.",
+  },
+  {
+    eyebrow: "B",
+    title: "Content Engine",
+    body: "Programmatic content trained on every interview, sales call, and post you've ever written. No generic AI slop.",
+  },
+  {
+    eyebrow: "C",
+    title: "RevOps Stack",
+    body: "HubSpot wired to your outbound, your enrichment, and your reporting. One source of truth, one weekly review.",
+  },
+  {
+    eyebrow: "D",
+    title: "Build + Own",
+    body: "We build the system, hand it off, and you operate it. 4–6 week engagement, then it's yours.",
+  },
+  {
+    eyebrow: "E",
+    title: "We Run It",
+    body: "Same systems, we operate them on your behalf. Monthly retainer, weekly cadence, full transparency.",
+  },
+  {
+    eyebrow: "F",
+    title: "Diagnostic Audit",
+    body: "Two-week deep audit on your existing motion. You leave with a roadmap whether we work together or not.",
+  },
+];
+---
+
+<section class="section" id="services">
+  <div class="container stack-6">
+    <span class="eyebrow"
+      ><span class="num">04</span><span class="sep">/</span> Services</span
+    >
+    <h2>What we <span class="italic-accent">build.</span></h2>
+    <p>
+      Six things we ship. Pick one or stack a few. Every system is built on the
+      same skeleton: lead in, score, route, convert.
+    </p>
+
+    <div class="divider-grid cols-3" style="margin-top:24px">
+      {
+        items.map((it) => (
+          <div class="dg-cell stack-3">
+            <span class="eyebrow">
+              <span class="num">{it.eyebrow}</span>
+            </span>
+            <h5>{it.title}</h5>
+            <p style="font-size:var(--font-size-caption)">{it.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

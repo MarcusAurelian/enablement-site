@@ -1,0 +1,127 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HubSpotMeetings from "../../components/HubSpotMeetings.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const studies = await getCollection("caseStudies");
+  return studies.map((cs) => ({ params: { slug: cs.id }, props: { cs } }));
+}
+
+const { cs } = Astro.props;
+const { Content } = await render(cs);
+
+const facts: Array<{ label: string; value: string }> = [
+  cs.data.industry && { label: "Industry", value: cs.data.industry },
+  cs.data.teamSize && { label: "Team size", value: String(cs.data.teamSize) },
+  cs.data.geography && { label: "Geography", value: cs.data.geography },
+  cs.data.engagementLength && {
+    label: "Engagement",
+    value: cs.data.engagementLength,
+  },
+].filter(Boolean) as Array<{ label: string; value: string }>;
+---
+
+<BaseLayout
+  title={`${cs.data.company} — ${cs.data.headline} · Enablement.ch`}
+  description={cs.data.outcome}
+>
+  <header class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <span class="eyebrow"
+          ><span class="num">↳</span><span class="sep">/</span>
+          <a href="/case-studies" style="color:inherit">Case studies</a></span
+        >
+        <h1 class="display" style="font-size:clamp(2.5rem,5vw,4rem)">
+          {cs.data.headline}
+        </h1>
+        <p class="lead hero-lead">
+          <strong style="color:var(--color-heading)">{cs.data.company}</strong> ·
+          {cs.data.outcome}
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <div class="container" style="padding-top:var(--space-6)">
+    <div class="stats">
+      {
+        cs.data.metrics.map((m) => (
+          <div class="stat">
+            <div class="stat-num" set:html={m.value} />
+            <div class="stat-label">{m.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div
+        style="display:grid; grid-template-columns:1fr; gap:var(--space-8); max-width:none"
+      >
+        <article
+          style="max-width:var(--container-prose); margin:0 auto; font-size:var(--font-size-lead); line-height:1.7"
+          class="prose"
+        >
+          <Content />
+        </article>
+
+        {
+          facts.length > 0 && (
+            <aside style="max-width:var(--container-prose); margin:0 auto; width:100%">
+              <div class="divider-grid cols-4">
+                {facts.map((f) => (
+                  <div class="dg-cell stack-3">
+                    <span class="eyebrow">
+                      <span class="num">↳</span>
+                      <span class="sep">/</span>
+                      <span>{f.label}</span>
+                    </span>
+                    <h5>{f.value}</h5>
+                  </div>
+                ))}
+              </div>
+            </aside>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <HubSpotMeetings />
+</BaseLayout>
+
+<style>
+  .prose :global(h2) {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-h3);
+    font-weight: 600;
+    color: var(--color-heading);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: var(--space-8) 0 var(--space-4);
+  }
+  .prose :global(p) {
+    color: var(--color-body);
+    max-width: none;
+    margin-bottom: var(--space-5);
+  }
+  .prose :global(p > strong) {
+    color: var(--color-heading);
+  }
+  .prose :global(em) {
+    font-style: italic;
+    color: var(--color-accent);
+  }
+  .prose :global(ul) {
+    color: var(--color-body);
+    padding-left: var(--space-5);
+    margin-bottom: var(--space-5);
+  }
+  .prose :global(li) {
+    margin-bottom: var(--space-2);
+  }
+</style>

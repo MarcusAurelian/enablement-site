@@ -1,0 +1,53 @@
+---
+interface LogoCell {
+  name: string;
+  caseStudy?: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  logos?: LogoCell[];
+}
+
+const {
+  eyebrow = "GTM teams that trust Enablement.ch to grow their pipeline",
+  logos = [
+    { name: "scrypt", caseStudy: "/case-studies/scrypt" },
+    { name: "HUBSPOT" },
+    { name: "Skribble", caseStudy: "/case-studies/skribble" },
+    { name: "linkup" },
+    { name: "Pillar", caseStudy: "/case-studies/pillar" },
+    { name: "forto." },
+    { name: "Beekeeper" },
+    { name: "Smallpdf", caseStudy: "/case-studies/smallpdf" },
+    { name: "Numarics" },
+    { name: "Tinybird" },
+    { name: "Bonusly", caseStudy: "/case-studies/bonusly" },
+    { name: "Aerleum" },
+  ],
+} = Astro.props;
+---
+
+<section class="section logo-wall-section">
+  <div class="container stack-5">
+    <div style="text-align:center">
+      <span class="eyebrow"
+        ><span class="num">01</span><span class="sep">/</span> {eyebrow}</span
+      >
+    </div>
+    <div class="logo-wall">
+      {
+        logos.map((logo) => (
+          <div class="logo-cell">
+            <span class="logo-mark">{logo.name}</span>
+            {logo.caseStudy && (
+              <a href={logo.caseStudy} class="logo-cs">
+                Case Study
+              </a>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

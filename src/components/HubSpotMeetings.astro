@@ -1,0 +1,38 @@
+---
+interface Props {
+  // Replace with your real HubSpot meeting link, e.g.
+  //   "https://meetings.hubspot.com/lanny-heiz/discovery"
+  meetingUrl?: string;
+  height?: string;
+}
+
+const {
+  meetingUrl = "https://meetings.hubspot.com/lanny-heiz",
+  height = "720px",
+} = Astro.props;
+---
+
+<section class="section" id="book">
+  <div class="container stack-6">
+    <span class="eyebrow"
+      ><span class="num">03</span><span class="sep">/</span> Book a call</span
+    >
+    <h2>30 minutes. <span class="italic-accent">No deck.</span></h2>
+    <p>
+      We map your current pipeline, identify the highest-leverage system to
+      build first, and tell you whether we're a fit. If we're not, we'll point
+      you to who is.
+    </p>
+    <div
+      class="meetings-iframe-container"
+      data-src={`${meetingUrl}?embed=true`}
+      style={`min-height:${height}; margin-top:24px; border:1px solid var(--color-border); border-radius:var(--radius-md); overflow:hidden; background:var(--color-surface)`}
+    >
+    </div>
+  </div>
+</section>
+
+<script
+  type="text/javascript"
+  src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"
+  is:inline></script>

@@ -1,0 +1,57 @@
+---
+const groups = [
+  {
+    title: "System",
+    links: [
+      { href: "/#outbound", label: "Outbound Engine" },
+      { href: "/#content", label: "Content Engine" },
+      { href: "/#revops", label: "RevOps Stack" },
+    ],
+  },
+  {
+    title: "Work",
+    links: [
+      { href: "/case-studies", label: "Case studies" },
+      { href: "/#how-it-works", label: "How it works" },
+      { href: "/#about", label: "Team" },
+    ],
+  },
+  {
+    title: "Contact",
+    links: [
+      { href: "/#book", label: "Book a call" },
+      { href: "https://www.linkedin.com/company/enablementch", label: "LinkedIn" },
+      { href: "mailto:hello@enablement.ch", label: "hello@enablement.ch" },
+    ],
+  },
+];
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="nav-logo"
+          >Enablement<span class="dot">.</span>ch</a
+        >
+        <p class="footer-tagline">
+          Fractional GTM engineering for B2B teams in DACH.
+        </p>
+      </div>
+      {
+        groups.map((g) => (
+          <div class="footer-group">
+            <h6>{g.title}</h6>
+            {g.links.map((l) => (
+              <a href={l.href}>{l.label}</a>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+    <div class="footer-bottom">
+      <span>© {new Date().getFullYear()} Enablement.ch</span>
+      <span>v0.4 · Site</span>
+    </div>
+  </div>
+</footer>

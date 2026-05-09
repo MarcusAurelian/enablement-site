@@ -1,0 +1,41 @@
+---
+interface Props {
+  eyebrow?: string;
+  primaryHref?: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+
+const {
+  eyebrow = "Fractional GTM engineering · DACH",
+  primaryHref = "/#book",
+  primaryLabel = "Book a call",
+  secondaryHref = "/case-studies",
+  secondaryLabel = "See the work",
+} = Astro.props;
+---
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <span class="eyebrow"
+        ><span class="num">↳</span><span class="sep">/</span> {eyebrow}</span
+      >
+      <h1 class="display">
+        Scale your pipeline,<br />
+        <span class="italic-accent">not your headcount.</span>
+      </h1>
+      <p class="lead hero-lead">
+        We build the outbound systems B2B teams haven't been able to build for
+        themselves. Brief to production in 4–6 weeks. You own it, or we run it.
+      </p>
+      <div class="hero-actions">
+        <a href={primaryHref} class="btn btn-accent btn-md">{primaryLabel}</a>
+        <a href={secondaryHref} class="btn btn-tertiary"
+          >{secondaryLabel} <span class="arrow">→</span></a
+        >
+      </div>
+    </div>
+  </div>
+</header>

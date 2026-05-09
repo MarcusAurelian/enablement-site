@@ -1,0 +1,31 @@
+---
+interface Stat {
+  number: string;
+  label: string;
+}
+
+interface Props {
+  stats?: Stat[];
+}
+
+const {
+  stats = [
+    { number: "2×", label: "Pipeline in 3 months" },
+    { number: "4–6 wk", label: "Brief to production" },
+    { number: "93+", label: "B2B GTM teams enabled" },
+  ],
+} = Astro.props;
+---
+
+<div class="container" style="padding-top:var(--space-6)">
+  <div class="stats">
+    {
+      stats.map((s) => (
+        <div class="stat">
+          <div class="stat-num" set:html={s.number} />
+          <div class="stat-label">{s.label}</div>
+        </div>
+      ))
+    }
+  </div>
+</div>

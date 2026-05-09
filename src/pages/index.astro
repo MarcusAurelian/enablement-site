@@ -1,0 +1,80 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import LogoWall from "../components/LogoWall.astro";
+import StatStrip from "../components/StatStrip.astro";
+import Workflow from "../components/Workflow.astro";
+import ServicesGrid from "../components/ServicesGrid.astro";
+import HubSpotMeetings from "../components/HubSpotMeetings.astro";
+import { getCollection } from "astro:content";
+
+const featured = (await getCollection("caseStudies", (e) => e.data.featured))
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .slice(0, 3);
+---
+
+<BaseLayout>
+  <Hero />
+  <LogoWall />
+  <StatStrip />
+  <Workflow />
+  <ServicesGrid />
+
+  <section class="section">
+    <div class="container stack-6">
+      <span class="eyebrow"
+        ><span class="num">05</span><span class="sep">/</span> Recent work</span
+      >
+      <h2>Systems we've <span class="italic-accent">shipped.</span></h2>
+      <div class="divider-grid cols-3" style="margin-top:24px">
+        {
+          featured.map((cs) => (
+            <a
+              href={`/case-studies/${cs.id}`}
+              class="dg-cell stack-4"
+              style="text-decoration:none; color:inherit; display:block"
+            >
+              <span class="eyebrow">
+                <span class="num">{cs.data.company}</span>
+              </span>
+              <h4 style="margin-top:12px">{cs.data.headline}</h4>
+              <p
+                style="font-size:var(--font-size-caption); color:var(--color-body); margin-top:12px"
+              >
+                {cs.data.outcome}
+              </p>
+              <div
+                class="gap-4"
+                style="margin-top:16px; padding-top:16px; border-top:1px solid var(--color-border); align-items:flex-start"
+              >
+                {cs.data.metrics.slice(0, 2).map((m) => (
+                  <div>
+                    <div
+                      class="stat-num"
+                      style="font-size:1.5rem; line-height:1; margin:0"
+                    >
+                      {m.value}
+                    </div>
+                    <div
+                      class="stat-label"
+                      style="font-size:10px; margin-top:4px"
+                    >
+                      {m.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </a>
+          ))
+        }
+      </div>
+      <div class="hero-actions" style="margin-top:32px; justify-content:center">
+        <a href="/case-studies" class="btn btn-secondary btn-md"
+          >See all case studies <span class="arrow">→</span></a
+        >
+      </div>
+    </div>
+  </section>
+
+  <HubSpotMeetings />
+</BaseLayout>
