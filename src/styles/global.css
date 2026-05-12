@@ -1164,110 +1164,119 @@ p { margin: 0; max-width: 64ch; }
 .marquee-row {
   display: grid;
   grid-template-columns: auto 1fr;
-  align-items: center;
-  gap: var(--space-7);
+  align-items: stretch;
   max-width: var(--container-content);
   margin: 0 auto;
-  padding: var(--space-5) var(--space-5) var(--space-6);
-}
-@media (min-width: 1024px) {
-  .marquee-row { padding-inline: var(--space-7); }
 }
 @media (max-width: 768px) {
-  .marquee-row {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-    padding-block: var(--space-5) var(--space-6);
-  }
+  .marquee-row { grid-template-columns: 1fr; }
 }
 .marquee-label {
+  display: flex;
+  align-items: center;
+  padding: var(--space-5) var(--space-7) var(--space-5) var(--space-5);
   font-family: var(--font-mono);
   font-size: var(--font-size-eyebrow);
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--color-muted);
-  max-width: 14ch;
+  max-width: 16ch;
   line-height: 1.5;
   font-weight: 500;
+  border-right: 1px solid var(--color-border);
+}
+@media (min-width: 1024px) {
+  .marquee-label { padding-left: var(--space-7); }
+}
+@media (max-width: 768px) {
+  .marquee-label {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    padding-block: var(--space-4);
+    max-width: none;
+  }
+}
+
+.marquee-lanes {
+  display: flex;
+  flex-direction: column;
+  /* Edge fade — both sides of every lane fade to transparent */
+  mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
 }
 .marquee {
   position: relative;
   overflow: hidden;
-  padding-bottom: var(--space-5);
+}
+.marquee + .marquee {
+  border-top: 1px solid var(--color-border);
 }
 .marquee-track {
   display: flex;
-  gap: var(--space-8);
-  animation: marquee-scroll 60s linear infinite;
   width: max-content;
-  align-items: center;
+  animation: marquee-scroll 60s linear infinite;
+  align-items: stretch;
 }
-.marquee:hover .marquee-track {
+.marquee.reverse .marquee-track {
+  animation-direction: reverse;
+}
+.marquee-section:hover .marquee-track {
   animation-play-state: paused;
 }
+
 .marquee-cell {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 52px;
-  min-width: 80px;
+  width: 180px;
+  height: 96px;
   flex-shrink: 0;
+  border-right: 1px solid var(--color-border);
+  text-decoration: none;
   font-family: var(--font-sans);
   font-weight: 600;
   font-size: 1.125rem;
   color: var(--color-body);
-  text-decoration: none;
   white-space: nowrap;
 }
-/* Vertical separator after each cell */
-.marquee-cell::after {
-  content: "";
-  position: absolute;
-  right: calc(-1 * var(--space-8) / 2);
-  top: 18%;
-  bottom: 18%;
-  width: 1px;
-  background: var(--color-border);
-}
-/* Logo image — consistent silhouette in light AND dark mode */
 .marquee-cell .logo-img {
   height: 28px;
   width: auto;
-  max-width: 140px;
+  max-width: 130px;
   object-fit: contain;
   filter: grayscale(100%) brightness(0);
-  opacity: 0.55;
-  transition: filter var(--motion-duration-fast) var(--motion-ease-standard),
-              opacity var(--motion-duration-fast) var(--motion-ease-standard);
+  opacity: 0.45;
+  transition: opacity var(--motion-duration-fast) var(--motion-ease-standard),
+              filter var(--motion-duration-fast) var(--motion-ease-standard);
 }
 [data-theme="dark"] .marquee-cell .logo-img {
   filter: grayscale(100%) brightness(0) invert(1);
-  opacity: 0.65;
+  opacity: 0.55;
 }
 .marquee-cell .logo-mark {
   letter-spacing: -0.01em;
   color: var(--color-muted);
-  opacity: 0.85;
+  opacity: 0.75;
 }
-/* Hover the whole marquee → all logos color up */
-.marquee:hover .logo-img {
+/* Hover anywhere in the section → all logos in BOTH lanes color up */
+.marquee-section:hover .logo-img {
   filter: grayscale(0%) brightness(1);
   opacity: 1;
 }
-[data-theme="dark"] .marquee:hover .logo-img {
+[data-theme="dark"] .marquee-section:hover .logo-img {
   filter: grayscale(0%) brightness(1);
   opacity: 1;
 }
-.marquee:hover .logo-mark {
+.marquee-section:hover .logo-mark {
   color: var(--color-heading);
   opacity: 1;
 }
 
-/* Case Study pill — absolute, sits in the marquee bottom padding without breaking row alignment */
+/* Case Study pill — INSIDE the cell at bottom-center, no row-height shift */
 .cs-pill {
   position: absolute;
-  bottom: -22px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   display: inline-flex;
@@ -1291,6 +1300,7 @@ p { margin: 0; max-width: 64ch; }
   border-color: var(--color-accent);
   background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface));
 }
+
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
