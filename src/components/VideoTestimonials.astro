@@ -1,13 +1,13 @@
 ---
 interface Testimonial {
-  /** Filename in public/testimonials/ or full URL. Optional — placeholder shown when missing. */
-  videoSrc?: string;
+  /** Vimeo URL (any format). Loaded on click. */
+  vimeoUrl?: string;
+  /** Optional poster image path */
+  thumbnail?: string;
   name: string;
   title: string;
   company: string;
   quote: string;
-  /** Optional thumbnail filename in public/testimonials/ */
-  thumbnail?: string;
 }
 
 interface Props {
@@ -26,6 +26,7 @@ const {
       company: "skilfit",
       quote:
         "We went from 2 meetings a month to 10 meetings per week in just 6 weeks.",
+      vimeoUrl: "https://vimeo.com/1054119519/a2ff25a184",
     },
     {
       name: "Ivan Nieuwoudt",
@@ -33,50 +34,60 @@ const {
       company: "warmly",
       quote:
         "We're generating up to $500,000 in pipeline per month using signal-based outreach.",
+      vimeoUrl: "https://vimeo.com/1126112365/3cd28d2da4",
     },
     {
       name: "Amit Puri",
       title: "Chief Revenue Officer",
       company: "Bound",
       quote: "We 2x'd our pipeline in just 3 months.",
+      vimeoUrl: "https://vimeo.com/1054119763/324f7f23a6",
     },
   ],
 } = Astro.props;
+
+function parseVimeo(url?: string) {
+  if (!url) return { id: undefined, hash: undefined };
+  const m = url.match(/vimeo\.com\/(\d+)(?:\/([a-zA-Z0-9]+))?/);
+  return { id: m?.[1], hash: m?.[2] };
+}
 ---
 
 <section class="section video-testimonials-section">
   <div class="container stack-6">
-    <span class="eyebrow"
-      >{eyebrow}</span
-    >
+    <span class="eyebrow">{eyebrow}</span>
     <h2>{headline}</h2>
     <div class="video-grid">
       {
-        testimonials.map((t) => (
-          <div class="video-card">
-            <button
-              class="video-thumb"
-              aria-label={`Play testimonial from ${t.name}`}
-              data-src={t.videoSrc || ""}
-            >
-              <span class="video-thumb-fill" />
-              <span class="video-play">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </span>
-            </button>
-            <div class="video-meta">
-              <p class="video-quote">{`"${t.quote}"`}</p>
-              <div class="video-attribution">
-                <span class="video-name">{t.name}</span>
-                <span class="video-title">
-                  {t.title} · {t.company}
+        testimonials.map((t) => {
+          const v = parseVimeo(t.vimeoUrl);
+          return (
+            <div class="video-card">
+              <button
+                class="video-thumb vimeo-facade"
+                aria-label={`Play testimonial from ${t.name}`}
+                data-vimeo-id={v.id}
+                data-vimeo-hash={v.hash}
+              >
+                <span class="video-thumb-fill" />
+                <span class="video-play">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
                 </span>
+              </button>
+              <div class="video-meta">
+                <p class="video-quote">{`"${t.quote}"`}</p>
+                <div class="video-attribution">
+                  <span class="video-name">{t.name}</span>
+                  <span class="video-title">
+                    {t.title} · {t.company}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        ))
+          );
+        })
       }
     </div>
   </div>

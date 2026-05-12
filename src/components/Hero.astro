@@ -8,6 +8,8 @@ interface Props {
   videoLabel?: string;
   /** Rotating phrases after "Turn your tools into". First entry is the static fallback. */
   rotatingWords?: string[];
+  /** Vimeo URL (any format) for the hero VSL. Loaded on click. */
+  vimeoUrl?: string;
 }
 
 const {
@@ -23,7 +25,13 @@ const {
     "Pipeline",
     "Revenue Growth",
   ],
+  vimeoUrl = "https://vimeo.com/1054121771/bbe92f66a3",
 } = Astro.props;
+
+// Parse Vimeo URL: vimeo.com/{id}/{hash} or vimeo.com/{id}
+const vimeoMatch = vimeoUrl?.match(/vimeo\.com\/(\d+)(?:\/([a-zA-Z0-9]+))?/);
+const vimeoId = vimeoMatch?.[1];
+const vimeoHash = vimeoMatch?.[2];
 ---
 
 <header class="hero">
@@ -48,7 +56,12 @@ const {
 
   <!-- VSL frame under the headline -->
   <div class="hero-visual">
-    <div class="hero-visual-frame" aria-label="Intro video">
+    <div
+      class="hero-visual-frame vimeo-facade"
+      aria-label="Intro video"
+      data-vimeo-id={vimeoId}
+      data-vimeo-hash={vimeoHash}
+    >
       <div class="hero-visual-play">
         <button class="play-btn" aria-label="Play intro video">
           <svg viewBox="0 0 24 24" fill="currentColor"

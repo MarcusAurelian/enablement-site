@@ -346,6 +346,23 @@ p { margin: 0; max-width: 64ch; }
 .hero-actions { display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap; justify-content: center; margin-top: var(--space-2); }
 .hero-actions-below { margin-top: var(--space-6); }
 
+/* Vimeo facade: swapped iframe fills its parent frame cleanly */
+.vimeo-iframe {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  display: block;
+  background: var(--color-canvas);
+}
+.video-card .vimeo-iframe {
+  border-radius: var(--radius-md);
+}
+.hero-visual .vimeo-iframe {
+  border-radius: var(--radius-lg);
+}
+.vimeo-facade { cursor: pointer; }
+
 /* Rotating word in the hero H1 */
 .rotating-word {
   display: inline-block;

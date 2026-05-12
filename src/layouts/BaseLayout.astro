@@ -46,6 +46,32 @@ const {
           localStorage.setItem("theme", next);
         } catch (e) {}
       };
+
+      // Vimeo facade: click → swap thumbnail with embed
+      document.querySelectorAll(".vimeo-facade").forEach((el) => {
+        el.addEventListener(
+          "click",
+          function () {
+            const id = el.dataset.vimeoId;
+            const hash = el.dataset.vimeoHash;
+            if (!id) return;
+            const src =
+              "https://player.vimeo.com/video/" +
+              id +
+              (hash ? "?h=" + hash + "&" : "?") +
+              "autoplay=1&dnt=1";
+            const iframe = document.createElement("iframe");
+            iframe.src = src;
+            iframe.allow =
+              "autoplay; fullscreen; picture-in-picture; clipboard-write";
+            iframe.allowFullscreen = true;
+            iframe.frameBorder = "0";
+            iframe.className = "vimeo-iframe";
+            el.replaceWith(iframe);
+          },
+          { once: true }
+        );
+      });
     </script>
   </body>
 </html>
