@@ -1,6 +1,9 @@
 ---
 interface LogoCell {
   name: string;
+  /** Path to logo file in public/logos/. If omitted, renders the name as text. */
+  logo?: string;
+  /** Slug-only path to a case study. The Case Study pill appears beneath linked cells. */
   caseStudy?: string;
 }
 
@@ -10,18 +13,22 @@ interface Props {
 
 const {
   logos = [
-    { name: "scrypt", caseStudy: "/case-studies/scrypt" },
-    { name: "HUBSPOT" },
-    { name: "Skribble", caseStudy: "/case-studies/skribble" },
-    { name: "linkup" },
-    { name: "Pillar", caseStudy: "/case-studies/pillar" },
-    { name: "forto." },
-    { name: "Beekeeper" },
-    { name: "Smallpdf", caseStudy: "/case-studies/smallpdf" },
-    { name: "Numarics" },
-    { name: "Tinybird" },
-    { name: "Bonusly", caseStudy: "/case-studies/bonusly" },
-    { name: "Aerleum" },
+    { name: "Scrypt", logo: "/logos/scrypt.webp", caseStudy: "/case-studies/scrypt" },
+    { name: "HubSpot", logo: "/logos/hubspot.png" },
+    { name: "Skribble", logo: "/logos/skribble.webp" },
+    { name: "Strategyzer", logo: "/logos/strategyzer.jpg" },
+    { name: "Ohalo", logo: "/logos/ohalo.webp", caseStudy: "/case-studies/ohalo" },
+    { name: "Bound", logo: "/logos/bound.avif" },
+    { name: "Hy.co", logo: "/logos/hyco.png" },
+    { name: "Lipdub", logo: "/logos/lipdub.avif" },
+    { name: "Adthena", logo: "/logos/adthena.png" },
+    { name: "Emlen", logo: "/logos/emlen.svg" },
+    { name: "Leostream", logo: "/logos/leostream.webp" },
+    { name: "Orca", logo: "/logos/orca.png" },
+    { name: "Mybites", logo: "/logos/mybites.svg" },
+    { name: "Sysdyne", logo: "/logos/sysdyne.png" },
+    { name: "Trawa", logo: "/logos/trawa.png" },
+    { name: "Blueprint", logo: "/logos/blueprint.png" },
   ],
 } = Astro.props;
 
@@ -32,22 +39,36 @@ const trackLogos = [...logos, ...logos];
 <section class="marquee" aria-label="Clients">
   <div class="marquee-track">
     {
-      trackLogos.map((logo, idx) =>
-        logo.caseStudy ? (
+      trackLogos.map((logo, idx) => {
+        const inner = (
+          <>
+            {logo.logo ? (
+              <img
+                class="logo-img"
+                src={logo.logo}
+                alt={logo.name}
+                loading="lazy"
+              />
+            ) : (
+              <span class="logo-mark">{logo.name}</span>
+            )}
+            {logo.caseStudy && <span class="cs-pill">Case Study</span>}
+          </>
+        );
+        return logo.caseStudy ? (
           <a
             class="marquee-cell has-link"
             href={logo.caseStudy}
             aria-hidden={idx >= logos.length}
           >
-            <span class="logo-mark">{logo.name}</span>
-            <span class="cs-pill">Case Study</span>
+            {inner}
           </a>
         ) : (
           <span class="marquee-cell" aria-hidden={idx >= logos.length}>
-            <span class="logo-mark">{logo.name}</span>
+            {inner}
           </span>
-        ),
-      )
+        );
+      })
     }
   </div>
 </section>

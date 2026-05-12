@@ -1,5 +1,6 @@
 ---
 company: Ohalo
+logo: /logos/ohalo.webp
 result: A working GTM motion in 90 days
 outcome: Built outbound from zero for a fractional CMO walking into an empty stack.
 metrics:

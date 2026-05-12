@@ -1191,6 +1191,23 @@ p { margin: 0; max-width: 64ch; }
 .marquee-cell .logo-mark {
   letter-spacing: -0.01em;
 }
+.marquee-cell .logo-img {
+  max-height: 40px;
+  max-width: 160px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: filter var(--motion-duration-fast) var(--motion-ease-standard),
+              opacity var(--motion-duration-fast) var(--motion-ease-standard);
+}
+.marquee-cell.has-link .logo-img { opacity: 0.9; }
+.marquee:hover .logo-img,
+.marquee-cell.has-link:hover .logo-img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
 .cs-pill {
   display: inline-flex;
   align-items: center;

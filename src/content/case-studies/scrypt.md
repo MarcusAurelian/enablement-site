@@ -1,5 +1,6 @@
 ---
 company: Scrypt
+logo: /logos/scrypt.webp
 result: 38 meetings booked in 90 days
 outcome: Built and shipped a full outbound engine in 5 weeks.
 metrics:
