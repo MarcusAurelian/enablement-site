@@ -46,15 +46,10 @@ const {
     <h2>{headline}</h2>
     <div class="faq-list">
       {
-        questions.map((qa, idx) => (
+        questions.map((qa) => (
           <details class="faq-item">
             <summary class="faq-summary">
-              <span class="faq-q">
-                <span class="faq-num">
-                  {String(idx + 1).padStart(2, "0")}
-                </span>
-                {qa.q}
-              </span>
+              <span class="faq-q">{qa.q}</span>
               <span class="faq-toggle" aria-hidden="true" />
             </summary>
             <div class="faq-body">

@@ -4,7 +4,10 @@ const links = [{ href: "/case-studies", label: "Clients" }];
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="/" class="nav-logo">Enablement<span class="dot">.</span>ch</a>
+    <a href="/" class="nav-logo" aria-label="Enablement.ch">
+      <img src="/logo-black.svg" alt="" class="logo-img logo-img-light" />
+      <img src="/logo-white.svg" alt="" class="logo-img logo-img-dark" />
+    </a>
     <div class="nav-menu">
       {links.map(({ href, label }) => <a href={href}>{label}</a>)}
     </div>

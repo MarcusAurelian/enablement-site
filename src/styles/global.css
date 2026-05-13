@@ -234,6 +234,14 @@ p { margin: 0; max-width: 64ch; }
   letter-spacing: -0.02em;
 }
 .nav-logo .dot { color: var(--color-accent); }
+.nav-logo .logo-img {
+  height: 26px;
+  width: auto;
+  display: block;
+}
+.nav-logo .logo-img-dark { display: none; }
+[data-theme="dark"] .nav-logo .logo-img-light { display: none; }
+[data-theme="dark"] .nav-logo .logo-img-dark { display: block; }
 .nav-menu {
   display: none;
   gap: var(--space-6);
@@ -1556,14 +1564,6 @@ p { margin: 0; max-width: 64ch; }
   align-items: baseline;
   gap: var(--space-3);
 }
-.faq-num {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--color-muted);
-  letter-spacing: 0.04em;
-  flex-shrink: 0;
-}
 .faq-toggle {
   position: relative;
   width: 20px;
@@ -1579,7 +1579,7 @@ p { margin: 0; max-width: 64ch; }
   left: 50%;
   width: 12px;
   height: 1.5px;
-  background: var(--color-heading);
+  background: var(--color-accent);
   transform: translate(-50%, -50%);
   transition: transform var(--motion-duration-fast) var(--motion-ease-standard);
 }
@@ -1590,7 +1590,7 @@ p { margin: 0; max-width: 64ch; }
   transform: translate(-50%, -50%) rotate(0);
 }
 .faq-body {
-  padding: 0 0 var(--space-6) calc(2ch + var(--space-3));
+  padding: 0 0 var(--space-6) 0;
   color: var(--color-body);
   max-width: 64ch;
 }
