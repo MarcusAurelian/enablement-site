@@ -1,222 +1,350 @@
 ---
-// Before/After email diptych for the Outbound value-prop block.
-// Shows the AI-driven personalization in action.
-// v1 placeholder: hand off to design for polish later.
+// Before/After email visual for Block 3 (Outbound).
+// Authored at 900×875 in Claude Design; the .ev-stage-fit wrapper auto-scales.
+// Scoped under .ev-root with ev-* class prefix so no collision with site CSS.
 ---
 
-<div class="ba-mock">
-  <span class="ba-pill before">Before</span>
-  <article class="ba-card before-card">
-    <div class="ba-line">Hi <span class="ba-var">First name</span>,</div>
-    <div class="ba-line">
-      Saw that you <span class="ba-var">intent signal</span>. Specifically, you
-      <span class="ba-var">AI Summary</span>.
-    </div>
-    <div class="ba-line">
-      <span class="ba-var">Datapoint</span> usually
-      <span class="ba-var">AI inferred problem</span>.
-    </div>
-    <div class="ba-line ba-faded">
-      We solve this by <span class="ba-var">AI personalised value prop</span>.
-    </div>
-  </article>
+<div class="ev-root">
+  <div class="ev-stage-fit">
+    <div class="ev-stage" role="img" aria-label="Before and after email outreach comparison">
+      <!-- Before label -->
+      <span class="ev-label ev-label-before">Before</span>
 
-  <div class="ba-divider" aria-hidden="true">
-    <svg viewBox="0 0 24 80" preserveAspectRatio="none">
-      <line x1="12" y1="0" x2="12" y2="64" stroke="var(--color-accent)" stroke-width="1.5" stroke-dasharray="3 4" />
-      <polygon points="7,64 12,72 17,64" fill="var(--color-accent)" />
-    </svg>
-  </div>
-
-  <article class="ba-card after-card">
-    <header class="ba-after-head">
-      <div class="ba-avatar" aria-hidden="true">LH</div>
-      <div class="ba-from">
-        <div class="ba-name">Lanny Heiz</div>
-        <div class="ba-email">lanny@enablement.ch</div>
+      <!-- Before panel: templated email skeleton -->
+      <div class="ev-panel ev-panel-before">
+        <div class="ev-tpl">
+          <div>Hi <span class="ev-chip">First name</span></div>
+          <div style="margin-top: 14px;">
+            Saw that you <span class="ev-chip">intent signal</span> Specifically, you <span class="ev-chip">AI Summary</span>
+          </div>
+          <div>
+            <span class="ev-chip">Datapoint</span> usually <span class="ev-chip">AI inferred problem</span>
+          </div>
+          <div>We solve this by <span class="ev-chip">AI personalized value proposition</span></div>
+          <div style="margin-top: 10px;">Wo</div>
+          <div>Be</div>
+          <div>Se</div>
+        </div>
       </div>
-      <div class="ba-time">9:14 AM</div>
-    </header>
-    <div class="ba-body">
-      <p>Hi Hugh,</p>
-      <p>
-        Saw that you're <mark>hiring a marketing specialist</mark>. In the ad
-        you mentioned improving <mark>conversion rates for your online store</mark>
-        is key.
-      </p>
-      <p>
-        Semrush estimates your traffic at <mark>~81,000 visitors/month</mark>,
-        and on Shopify roughly 10% of shoppers abandon their carts.
-      </p>
-      <p>
-        Usually, the AOV of a store like yours is around $75. That's about
-        <mark>$15,000 in revenue missed every month</mark>.
-      </p>
-      <p>
-        We solve this by helping online stores identify their shoppers and
-        retarget them without spending more on ads.
-      </p>
-      <p>Can I send you the last 100 customers you missed - free?</p>
+
+      <!-- After label with sparkle -->
+      <span class="ev-label ev-label-after">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3z" />
+          <path d="M19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8L19 14z" />
+        </svg>
+        After
+      </span>
+
+      <!-- After panel: composed email -->
+      <div class="ev-panel ev-panel-after">
+        <div class="ev-email-head">
+          <div class="ev-avatar" aria-hidden="true">
+            <img src="/team/lanny.png" alt="Lanny Heiz" />
+          </div>
+          <div class="ev-from">
+            <div class="ev-name">Lanny Heiz</div>
+            <div class="ev-addr">lanny@enablement.ch</div>
+          </div>
+          <div class="ev-time">9:14&nbsp;AM <span class="ev-time-rel">(8 hours ago)</span></div>
+        </div>
+
+        <div class="ev-body">
+          <p>Hi Hugh,</p>
+          <p>
+            Saw that you're hiring a marketing specialist. In the ad you
+            <span class="ev-hl">mentioned improving conversion rates for your online store</span>
+            is key.
+          </p>
+          <p>
+            Ahrefs estimates your traffic at around 81'000 visitors and on Shopify around
+            <span class="ev-hl">10% of shoppers abandon their carts</span>.
+          </p>
+          <p>
+            Usually, the AOV of a store like yours is around $75, this means you're missing
+            <span class="ev-hl">about $15'000 in revenue every month.</span>
+          </p>
+          <p>We solve this by helping online stores identify their shoppers and retarget them without spending $ on ads.</p>
+          <p>Can I send you the last 100 customers you missed for free?</p>
+        </div>
+      </div>
+
+      <!-- Blue AI action pills -->
+      <span class="ev-ai ev-ai-find">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7" />
+          <path d="M21 21l-4.3-4.3" />
+        </svg>
+        Find any datapoint
+      </span>
+      <span class="ev-ai ev-ai-summarise">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3z" />
+        </svg>
+        Summarise with AI
+      </span>
+      <span class="ev-ai ev-ai-write">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3z" />
+        </svg>
+        Write AI personalisations
+      </span>
     </div>
-    <div class="ba-annotations">
-      <span class="ba-anno">Find any datapoint</span>
-      <span class="ba-anno">Summarise with AI</span>
-      <span class="ba-anno">Write AI personalisations</span>
-    </div>
-  </article>
-  <span class="ba-pill after">After</span>
+  </div>
 </div>
 
 <style>
-  .ba-mock {
+  /* ── Scoped tokens — light mode ─────────────────────── */
+  .ev-root {
+    --ev-canvas: #F2F4F8;
+    --ev-surface: #FFFFFF;
+    --ev-border: #E1E5EC;
+    --ev-border-2: #C9CFD9;
+    --ev-ink: #0F1217;
+    --ev-muted: #7C8390;
+    --ev-accent: #E11E48;
+    --ev-on-accent: #FFFFFF;
+    --ev-blue: #2F86E8;
+    --ev-flow: #6FA8DC;
+
+    /* Minimum width so .ev-root doesn't collapse to 0 inside our flex .pain-visual
+       container (since all its descendants are absolute-positioned). Horizontal
+       padding keeps the Find pill (which sits at x:0 in stage coords) off the
+       .pain-visual frame border. */
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+
+    font-family: "Sofia Sans", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Dark mode token overrides ──────────────────────── */
+  :global([data-theme="dark"]) .ev-root {
+    --ev-canvas: #181C23;
+    --ev-surface: #232830;
+    --ev-border: #2E343F;
+    --ev-border-2: #404754;
+    --ev-ink: #E5E9F0;
+    --ev-muted: #6B7280;
+  }
+
+  /* ── Scale-to-fit wrapper ──────────────────────────────
+     Stage shifted right by 70px so the visual content (which is biased toward
+     the left of the 900px canvas) appears horizontally centered in the frame. */
+  .ev-stage-fit {
     position: relative;
     width: 100%;
-    max-width: 480px;
+    aspect-ratio: 900 / 875;
     margin: 0 auto;
-    padding: var(--space-6) var(--space-5);
   }
-  .ba-pill {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: var(--radius-xs);
-    background: var(--color-accent);
-    color: var(--color-accent-on);
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 600;
-    line-height: 1.4;
-  }
-  .ba-pill.before {
+  .ev-stage {
     position: absolute;
     top: 0;
-    left: var(--space-4);
-    z-index: 3;
+    left: 55px;
+    width: 900px;
+    aspect-ratio: 900 / 875;
+    transform-origin: top left;
   }
-  .ba-pill.after {
+
+  /* ── Before / After crimson pills ────────────────────── */
+  .ev-label {
     position: absolute;
-    bottom: var(--space-2);
-    right: var(--space-4);
-    z-index: 3;
-  }
-  .ba-card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--space-4) var(--space-5);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-  }
-  .before-card {
-    margin-top: var(--space-4);
-    margin-left: 0;
-    width: 86%;
-    color: var(--color-muted);
-    font-size: 13px;
-    line-height: 1.6;
-  }
-  .ba-line + .ba-line { margin-top: 6px; }
-  .ba-faded { opacity: 0.55; }
-  .ba-var {
-    display: inline-block;
-    padding: 1px 8px;
-    border: 1px solid var(--color-border-strong);
-    border-radius: var(--radius-xs);
-    background: var(--color-surface-raised);
-    color: var(--color-body);
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-style: normal;
-    letter-spacing: 0.02em;
-    margin: 1px 2px;
-    vertical-align: baseline;
-  }
-  .ba-divider {
-    display: flex;
-    justify-content: center;
-    margin: var(--space-3) 0;
-    height: 36px;
-  }
-  .ba-divider svg {
-    height: 100%;
-    width: 24px;
-  }
-  .after-card {
-    margin-left: auto;
-    width: 92%;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-    z-index: 2;
-    position: relative;
-  }
-  .ba-after-head {
-    display: grid;
-    grid-template-columns: 32px 1fr auto;
-    gap: var(--space-3);
+    z-index: 5;
+    display: inline-flex;
     align-items: center;
-    padding-bottom: var(--space-3);
-    border-bottom: 1px solid var(--color-border);
-    margin-bottom: var(--space-3);
-  }
-  .ba-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 999px;
-    background: var(--color-accent);
-    color: var(--color-accent-on);
-    display: grid;
-    place-items: center;
-    font-family: var(--font-mono);
-    font-size: 11px;
+    gap: 8px;
+    padding: 8px 14px;
+    background: var(--ev-accent);
+    color: var(--ev-on-accent);
     font-weight: 600;
+    font-size: 15px;
+    line-height: 1;
+    border-radius: 8px;
+    letter-spacing: -0.005em;
+    box-shadow: 0 4px 12px rgba(15, 18, 23, 0.06);
   }
-  .ba-name {
-    color: var(--color-accent);
-    font-weight: 700;
-    font-size: 13px;
-    line-height: 1.2;
+  .ev-label svg {
+    width: 14px;
+    height: 14px;
   }
-  .ba-email {
-    font-family: var(--font-mono);
-    color: var(--color-muted);
-    font-size: 11px;
+  .ev-label-before {
+    top: 100px;
+    left: 104px;
   }
-  .ba-time {
-    font-family: var(--font-mono);
-    color: var(--color-muted);
-    font-size: 11px;
+  .ev-label-after {
+    top: 296px;
+    right: 208px;
+    padding-left: 12px;
   }
-  .ba-body p {
-    color: var(--color-body);
-    font-size: 13px;
-    line-height: 1.55;
-    margin: 0 0 var(--space-3);
+
+  /* ── Cards ───────────────────────────────────────────── */
+  .ev-panel {
+    position: absolute;
+    background: var(--ev-surface);
+    border: 1px solid var(--ev-border);
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(15, 18, 23, 0.08);
+    padding: 24px 32px 32px;
+    z-index: 2;
   }
-  .ba-body p:last-of-type { margin-bottom: 0; }
-  .ba-body mark {
-    background: rgba(225, 30, 72, 0.08);
-    color: var(--color-heading);
-    padding: 1px 3px;
-    border-radius: 3px;
-    font-weight: 500;
+  .ev-panel-before {
+    top: 116px;
+    left: 88px;
+    width: 460px;
+    z-index: 2;
   }
-  .ba-annotations {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    margin-top: var(--space-4);
-    padding-top: var(--space-3);
-    border-top: 1px dashed var(--color-border);
+  .ev-panel-after {
+    top: 312px;
+    left: 144px;
+    width: 506px;
+    z-index: 4;
   }
-  .ba-anno {
+
+  /* ── Before template (skeleton with chips) ───────────── */
+  .ev-tpl {
+    color: var(--ev-ink);
+    font-size: 16px;
+    line-height: 2.05;
+    letter-spacing: -0.005em;
+  }
+  .ev-tpl > div {
+    margin: 2px 0;
+  }
+  .ev-chip {
     display: inline-flex;
     align-items: center;
     padding: 4px 10px;
-    border-radius: var(--radius-xs);
-    background: #1d4ed8;
-    color: #fff;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.02em;
+    margin: 0 2px;
+    background: var(--ev-canvas);
+    color: var(--ev-ink);
+    border: 1px solid var(--ev-border-2);
+    border-radius: 8px;
     font-weight: 500;
+    font-size: 14.5px;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+
+  /* ── After email ─────────────────────────────────────── */
+  .ev-email-head {
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .ev-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--ev-accent);
+  }
+  .ev-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .ev-from .ev-name {
+    color: var(--ev-accent);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .ev-from .ev-addr {
+    color: var(--ev-muted);
+    font-size: 14px;
+    line-height: 1.35;
+  }
+  .ev-time {
+    color: var(--ev-muted);
+    font-size: 13.5px;
+    white-space: nowrap;
+    align-self: start;
+    padding-top: 4px;
+  }
+  .ev-time .ev-time-rel {
+    color: var(--ev-muted);
+  }
+
+  .ev-body {
+    color: var(--ev-ink);
+    font-size: 15.5px;
+    line-height: 1.7;
+    letter-spacing: -0.003em;
+  }
+  .ev-body p {
+    margin: 0 0 16px;
+    max-width: none;
+  }
+  .ev-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .ev-hl {
+    background: color-mix(in srgb, var(--ev-flow) 22%, var(--ev-surface));
+    border-radius: 4px;
+    padding: 1px 4px;
+    margin: 0 -1px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  /* ── Blue AI action pills ────────────────────────────── */
+  .ev-ai {
+    position: absolute;
+    z-index: 6;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px 9px 12px;
+    background: var(--ev-blue);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14.5px;
+    line-height: 1;
+    border-radius: 999px;
+    letter-spacing: -0.005em;
+    box-shadow:
+      0 4px 12px rgba(47, 134, 232, 0.3),
+      0 1px 2px rgba(15, 18, 23, 0.08);
+    white-space: nowrap;
+  }
+  .ev-ai svg {
+    width: 16px;
+    height: 16px;
+  }
+  .ev-ai-find {
+    top: 488px;
+    left: 0px;
+  }
+  .ev-ai-summarise {
+    top: 470px;
+    left: 592px;
+  }
+  .ev-ai-write {
+    top: 608px;
+    left: 563px;
   }
 </style>
+
+<script is:inline>
+  (function () {
+    var fits = document.querySelectorAll(".ev-stage-fit");
+    function apply() {
+      fits.forEach(function (fit) {
+        var stage = fit.querySelector(".ev-stage");
+        if (!stage) return;
+        var avail = fit.getBoundingClientRect().width;
+        stage.style.transform = "scale(" + Math.min(1, avail / 900) + ")";
+      });
+    }
+    apply();
+    window.addEventListener("resize", apply);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(apply);
+  })();
+</script>
