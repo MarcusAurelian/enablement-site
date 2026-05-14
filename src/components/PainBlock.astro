@@ -14,8 +14,8 @@ const {
   headline,
   lead,
   bullets,
-  ctaLabel = "See this in action",
-  ctaHref = "/case-studies",
+  ctaLabel = "",
+  ctaHref = "",
   reverse = false,
 } = Astro.props;
 ---
@@ -28,9 +28,11 @@ const {
     <ul class="pain-bullets">
       {bullets.map((b) => <li>{b}</li>)}
     </ul>
-    <a href={ctaHref} class="btn btn-tertiary">
-      {ctaLabel} <span class="arrow">→</span>
-    </a>
+    {ctaLabel && (
+      <a href={ctaHref} class="btn btn-tertiary">
+        {ctaLabel} <span class="arrow">→</span>
+      </a>
+    )}
   </div>
   <div class="pain-visual">
     <slot />

@@ -14,7 +14,8 @@ import AllboundOrg from "../components/visuals/AllboundOrg.astro";
 
 <BaseLayout>
   <!-- 01 Hero with VSL -->
-  <Hero />
+  {/* secondary CTA hidden for soft launch — restore default "See client work → /case-studies" when case studies relaunch */}
+  <Hero secondaryLabel="" secondaryHref="" />
 
   <!-- 02 Marquee logos -->
   <MarqueeLogoWall />
@@ -28,9 +29,8 @@ import AllboundOrg from "../components/visuals/AllboundOrg.astro";
       <span class="eyebrow">What we build</span>
       <h2>Three systems. <span class="italic-accent">One operating layer.</span></h2>
       <p>
-        We don't sell strategy or playbooks. We install three systems that turn
-        your tools into outbound, inbound, and a RevOps spine that wires them
-        together.
+        We build the outbound, inbound, and RevOps systems that B2B teams need
+        to scale. Each runs on a connected stack we install in your tools.
       </p>
     </div>
 
@@ -45,8 +45,6 @@ import AllboundOrg from "../components/visuals/AllboundOrg.astro";
             "Claude Code agents that prep AEs for discovery, draft follow-ups, run newsletters",
             "The internal systems we built to run our own GTM, installed in yours",
           ]}
-          ctaLabel="See how we glue the stack"
-          ctaHref="/case-studies"
         >
           <AllboundOrg />
         </PainBlock>
@@ -64,8 +62,6 @@ import AllboundOrg from "../components/visuals/AllboundOrg.astro";
             "Engagement tracking that scores every commenter and viewer",
             "ICP-fit engagers auto-routed into personalized outbound",
           ]}
-          ctaLabel="See our inbound engine"
-          ctaHref="/case-studies"
           reverse={true}
         >
           <LinkedInMock />
@@ -84,8 +80,6 @@ import AllboundOrg from "../components/visuals/AllboundOrg.astro";
             "AI personalization with operator review - 1:1 quality at 1:100 volume",
             "Wired into your CRM: signals route to Slack, alerts to AEs, replies tracked back",
           ]}
-          ctaLabel="See our outbound engine"
-          ctaHref="/case-studies"
         >
           <BeforeAfterEmail />
         </PainBlock>

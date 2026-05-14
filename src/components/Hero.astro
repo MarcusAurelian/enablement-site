@@ -97,9 +97,11 @@ if (vimeoUrl) {
   <div class="container">
     <div class="hero-actions hero-actions-below">
       <a href={primaryHref} class="btn btn-accent btn-md">{primaryLabel}</a>
-      <a href={secondaryHref} class="btn btn-tertiary"
-        >{secondaryLabel} <span class="arrow">→</span></a
-      >
+      {secondaryLabel && (
+        <a href={secondaryHref} class="btn btn-tertiary"
+          >{secondaryLabel} <span class="arrow">→</span></a
+        >
+      )}
     </div>
   </div>
 </header>

@@ -44,6 +44,41 @@ const {
       href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Hotjar Tracking Code -->
+    <script is:inline>
+      (function (h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function () {
+            (h.hj.q = h.hj.q || []).push(arguments);
+          };
+        h._hjSettings = { hjid: 4943680, hjsv: 6 };
+        a = o.getElementsByTagName("head")[0];
+        r = o.createElement("script");
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+    </script>
+
+    <!-- Syft -->
+    <script is:inline>
+      !(function (t) {
+        if (((window.syftc = t), window.syft)) return;
+        (window.syft = []),
+          ["identify", "track", "page", "signup"].forEach(function (t) {
+            window.syft[t] = function () {
+              var s = [].slice.call(arguments);
+              s.unshift(t), window.syft.push(s);
+            };
+          });
+        var s = document.createElement("script");
+        (s.async = !0),
+          s.setAttribute("src", "https://cdn.syftdata.com/syftnext/syft.umd.js"),
+          (document.body || document.head).appendChild(s);
+      })({ sourceId: "clyec9acd000dx41vukt3j7nc" });
+    </script>
   </head>
   <body>
     <Nav />
@@ -134,5 +169,49 @@ const {
         });
       })();
     </script>
+
+    <!-- LinkedIn Insight Tag -->
+    <script is:inline>
+      _linkedin_partner_id = "5869002";
+      window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+      window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    </script>
+    <script is:inline>
+      (function (l) {
+        if (!l) {
+          window.lintrk = function (a, b) {
+            window.lintrk.q.push([a, b]);
+          };
+          window.lintrk.q = [];
+        }
+        var s = document.getElementsByTagName("script")[0];
+        var b = document.createElement("script");
+        b.type = "text/javascript";
+        b.async = true;
+        b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+        s.parentNode.insertBefore(b, s);
+      })(window.lintrk);
+    </script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display:none;"
+        alt=""
+        src="https://px.ads.linkedin.com/collect/?pid=5869002&fmt=gif"
+      />
+    </noscript>
+
+    <!-- HubSpot Embed Code -->
+    <script
+      is:inline
+      type="text/javascript"
+      id="hs-script-loader"
+      async
+      defer
+      src="//js.hs-scripts.com/19613414.js"></script>
+
+    <!-- Vercel Web Analytics -->
+    <script is:inline defer src="/_vercel/insights/script.js"></script>
   </body>
 </html>
